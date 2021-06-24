@@ -1,3 +1,4 @@
+name: One-hosted deploy
 on:
   workflow_dispatch:
     inputs:
