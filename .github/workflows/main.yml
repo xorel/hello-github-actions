@@ -13,10 +13,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-			- run: |
-					echo "name: ${{ github.event.inputs.one_hosted_name }}"
-					echo "options: ${{ github.event.inputs.options }}"
-			- uses: actions/checkout@v1
-			- uses: ./action-deploy
-				with:
-					NAME: "${{ github.event.inputs.one_hosted_name }}"
+      - run: |
+          echo "name: ${{ github.event.inputs.one_hosted_name }}"
+          echo "options: ${{ github.event.inputs.options }}"
+      - uses: actions/checkout@v1
+      - uses: ./action-deploy
+        with:
+          NAME: "${{ github.event.inputs.one_hosted_name }}"
