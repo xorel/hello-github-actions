@@ -1,11 +1,22 @@
-name: A workflow for my Hello World file
-on: push
+on:
+  workflow_dispatch:
+    inputs:
+      one_hosted_name:
+        description: 'One-hosted name'
+        required: true
+        default: 'demo'
+      options:
+        description: 'options.yml location'
+        required: true
+        default: 'options.yml'
 jobs:
-  build:
-    name: Hello world action
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: ./action-a
-        with:
-          MY_NAME: "Mona"
+			- run: |
+					echo "name: ${{ github.event.inputs.one_hosted_name }}"
+					echo "options: ${{ github.event.inputs.options }}"
+			- uses: actions/checkout@v1
+			- uses: ./action-deploy
+				with:
+					NAME: "${{ github.event.inputs.one_hosted_name }}"

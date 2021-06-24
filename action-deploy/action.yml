@@ -1,0 +1,13 @@
+name: "Deploy"
+description: "deploy"
+author: "jorel@opennebula.io"
+inputs:
+  NAME:
+    description: "name"
+    required: true
+    default: "World"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
