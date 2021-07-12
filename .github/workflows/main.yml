@@ -12,4 +12,4 @@ jobs:
       - name: Issue number
         run: "echo ${{ github.event.issue.number }}"
       - name: Issue body
-        run: "echo ${{ github.event.issue.number }}"
+        run: "echo ${{ github.event.issue.body }}"
