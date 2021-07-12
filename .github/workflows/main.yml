@@ -5,15 +5,11 @@ on:
       - labeled
 
 jobs:
-  add-comment:
-    if: contains(github.event.label.name, 'abc')
+  echo-details:
+    if: github.event.label.name == 'action-deploy'
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
     steps:
-      - name: Add comment
-        uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
-        with:
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            Something ${{ github.event.issue }}
+      - name: Issue number
+        run: "echo ${{ github.event.issue.number }}"
+      - name: Issue body
+        run: "echo ${{ github.event.issue.number }}"
