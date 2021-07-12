@@ -11,5 +11,7 @@ jobs:
     steps:
       - name: Issue number
         run: "echo ${{ github.event.issue.number }}"
+      - name: Issue title
+        run: "echo ${{ github.event.issue.title }}"
       - name: Issue body
         run: "echo ${{ github.event.issue.body }}"
