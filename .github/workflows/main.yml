@@ -6,19 +6,29 @@ on:
 
 jobs:
   echo-details:
-    if: github.event.label.name == 'action-deploy'
     runs-on: ubuntu-latest
     steps:
-      - name: Add comment
-        uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
-        with:
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            Deployment started - see https://github.com/xorel/hello-github-actions/actions
-
       - name: Issue number
         run: "echo ${{ github.event.issue.number }}"
       - name: Issue title
         run: "echo ${{ github.event.issue.title }}"
       - name: Issue body
         run: "echo ${{ github.event.issue.body }}"
+
+      - name: echo
+        shell: bash
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+        run: 'echo $MY_SECRET'
+
+      - name: echo | wc
+        shell: bash
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+        run: 'echo "$MY_SECRET" | wc -l'
+
+      - name: echo | base64
+        shell: bash
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+        run: 'echo "$MY_SECRET" | base64'
