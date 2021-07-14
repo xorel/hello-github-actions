@@ -19,16 +19,16 @@ jobs:
         shell: bash
         env:
           MY_SECRET: ${{ secrets.MY_SECRET }}
-        run: 'echo $MY_SECRET'
+        run: "echo $MY_SECRET"
 
       - name: echo | wc
         shell: bash
         env:
           MY_SECRET: ${{ secrets.MY_SECRET }}
-        run: 'echo "$MY_SECRET" | wc -l'
+        run: "echo \"$MY_SECRET\" | wc -l"
 
       - name: echo | base64
         shell: bash
         env:
           MY_SECRET: ${{ secrets.MY_SECRET }}
-        run: 'echo "$MY_SECRET" | base64'
+        run: "echo \"$MY_SECRET\" | base64"
