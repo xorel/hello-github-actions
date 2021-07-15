@@ -15,7 +15,7 @@ jobs:
       - name: save mail body
         id: deploy
         run: |
-          echo ::set-output name=mail_body::"abc bbb ccc"
+          echo ::set-output name=mail_body::"abc%0Abbb%0Accc"
           echo ::set-output name=recepient::"jorel@opennebula.io"
 
       - name: Send mail
