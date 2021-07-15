@@ -5,30 +5,29 @@ on:
       - labeled
 
 jobs:
-  echo-details:
+  mail-details:
     runs-on: ubuntu-latest
     steps:
       - name: Issue number
         run: "echo ${{ github.event.issue.number }}"
       - name: Issue title
         run: "echo ${{ github.event.issue.title }}"
-      - name: Issue body
-        run: "echo ${{ github.event.issue.body }}"
+      - name: save mail body
+        id: deploy
+        run: |
+          echo ::set-output name=mail_body::"abc bbb ccc"
+          echo ::set-output name=recepient::"jorel@opennebula.io"
 
-      - name: echo
-        shell: bash
-        env:
-          MY_SECRET: ${{ secrets.MY_SECRET }}
-        run: "echo $MY_SECRET"
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: mail.opennebula.org
+          server_port: 587
+          username: infra@opennebula.org
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: Github Actions
+          to: ${{ steps.deploy.outputs.recepient }}
+          from: One Hosted
+          body: ${{ steps.deploy.outputs.mail_body }}
+          ignore_cert: true
 
-      - name: echo | wc
-        shell: bash
-        env:
-          MY_SECRET: ${{ secrets.MY_SECRET }}
-        run: "echo \"$MY_SECRET\" | wc -l"
-
-      - name: echo | base64
-        shell: bash
-        env:
-          MY_SECRET: ${{ secrets.MY_SECRET }}
-        run: "echo \"$MY_SECRET\" | base64"
