@@ -3,10 +3,10 @@
 def set_output(name, content)
     # escape content
     esc = content.gsub("%", '%25')
-    esc.gsub!("\n", '%A0')
-    esc.gsub!("\r", '%D0')
+    esc.gsub!("\n", '%0A')
+    esc.gsub!("\r", '%0D')
 
-    puts "::set-output name=#{name}::#{esc}"
+    puts "::set-output name=\"#{name}::#{esc}\""
 end
 
 puts "AAA"
