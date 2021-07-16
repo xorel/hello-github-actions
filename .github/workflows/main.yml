@@ -12,22 +12,29 @@ jobs:
         run: "echo ${{ github.event.issue.number }}"
       - name: Issue title
         run: "echo ${{ github.event.issue.title }}"
-      - name: save mail body
+      - name: run test.rb
         id: deploy
-        run: |
-          echo ::set-output name=mail_body::"abc%0Abbb%0Accc"
-          echo ::set-output name=recepient::"jorel@opennebula.io"
+        run: "ruby ./test.rb"
 
-      - name: Send mail
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: mail.opennebula.org
-          server_port: 587
-          username: infra@opennebula.org
-          password: ${{ secrets.MAIL_PASSWORD }}
-          subject: Github Actions
-          to: ${{ steps.deploy.outputs.recepient }}
-          from: One Hosted
-          body: ${{ steps.deploy.outputs.mail_body }}
-          ignore_cert: true
+      - name: echo test1
+        run: echo "${{ steps.deploy.outputs.test1 }}"
+
+      - name: echo test2
+        run: echo "${{ steps.deploy.outputs.test2 }}"
+
+      - name: echo test3
+        run: echo "${{ steps.deploy.outputs.test3 }}"
+
+      # - name: Send mail
+      #   uses: dawidd6/action-send-mail@v3
+      #   with:
+      #     server_address: mail.opennebula.org
+      #     server_port: 587
+      #     username: infra@opennebula.org
+      #     password: ${{ secrets.MAIL_PASSWORD }}
+      #     subject: Github Actions
+      #     to: ${{ steps.deploy.outputs.recepient }}
+      #     from: One Hosted
+      #     body: ${{ steps.deploy.outputs.mail_body }}
+      #     ignore_cert: true
 
