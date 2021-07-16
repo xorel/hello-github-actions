@@ -6,7 +6,7 @@ def set_output(name, content)
     esc.gsub!("\n", '%A0')
     esc.gsub!("\r", '%D0')
 
-    puts "::set-output name=#{name}::\"#{esc}\""
+    puts "::set-output name=#{name}::#{esc}"
 end
 
 puts "AAA"
