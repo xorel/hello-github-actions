@@ -5,40 +5,10 @@ on:
       - labeled
 
 jobs:
-  mail-details:
+  labeled:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Issue number
-        run: "echo ${{ github.event.issue.number }}"
-      - name: Issue title
-        run: "echo ${{ github.event.issue.title }}"
-
-      - name: run test.rb
-        id: deploy
-        run: "ruby ./test.rb"
-
-      - name: echo test1
-        run: echo "${{ steps.deploy.outputs.test1 }}"
-
-      - name: echo test2
-        run: echo "${{ steps.deploy.outputs.test2 }}"
-
-      - name: echo test3
-        run: echo "${{ steps.deploy.outputs.test3 }}"
-
-      # - name: Send mail
-      #   uses: dawidd6/action-send-mail@v3
-      #   with:
-      #     server_address: mail.opennebula.org
-      #     server_port: 587
-      #     username: infra@opennebula.org
-      #     password: ${{ secrets.MAIL_PASSWORD }}
-      #     subject: Github Actions
-      #     to: ${{ steps.deploy.outputs.recepient }}
-      #     from: One Hosted
-      #     body: ${{ steps.deploy.outputs.mail_body }}
-      #     ignore_cert: true
+      - name: Add abc label
+        run: |
+          curl  -H "Accept: application/vnd.github.v3+json" -X POST -u xorel:${{ secrets.PAT }}   https://api.github.com/repos/xorel/hello-github-actions/issues/4/labels -d '["abc"]'
 
