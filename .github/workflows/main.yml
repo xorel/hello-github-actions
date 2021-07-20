@@ -10,5 +10,8 @@ jobs:
     steps:
       - name: Add abc label
         run: |
-          curl  -H "Accept: application/vnd.github.v3+json" -X POST -u xorel:${{ secrets.PAT }}   https://api.github.com/repos/xorel/hello-github-actions/issues/4/labels -d '["abc"]'
+          curl -H "Accept: application/vnd.github.v3+json" \
+               -X POST -u xorel:${{ secrets.PAT }} \
+               https://api.github.com/repos/xorel/hello-github-actions/issues/4/labels \
+               -d '["abc"]'
 
