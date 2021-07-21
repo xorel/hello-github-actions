@@ -17,5 +17,5 @@ jobs:
       - run: |
           echo "Hello ${{ github.event.inputs.name }}!"
           echo "- in ${{ github.event.inputs.home }}!"
-      - run: which mailx
-      - run: mailx --help
+      - run: which mail
+      - run: mail --help
