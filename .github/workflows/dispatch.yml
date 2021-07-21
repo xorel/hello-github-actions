@@ -22,10 +22,10 @@ jobs:
           ignore_cert: true
 
 
-      - name: Checkout
-        uses: actions/checkout@v2
+#       - name: Checkout
+#         uses: actions/checkout@v2
 
-      - name: Send mail using python
-        run: |
-          python ./mail.py ${{ secrets.MAIL_PASSWORD }}
+#       - name: Send mail using python
+#         run: |
+#           python ./mail.py ${{ secrets.MAIL_PASSWORD }}
 
