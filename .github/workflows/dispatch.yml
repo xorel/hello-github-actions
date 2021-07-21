@@ -8,8 +8,16 @@ jobs:
   which_cmd:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: mail.opennebula.org
+          server_port: 587
+          username: infra@opennebula.org
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: 'hello test'
+          to: 'jorel@opennebula.io'
+          from: OneHosted
+          body: "here is something"
+          ignore_cert: true
 
-      - name: mail.py
-        run: ./mail.py
