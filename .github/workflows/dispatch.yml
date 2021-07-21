@@ -8,5 +8,8 @@ jobs:
   which_cmd:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          which ${{ github.event.inputs.cmd }}
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: mail.py
+        run: ./mail.py
