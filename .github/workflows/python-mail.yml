@@ -1,0 +1,17 @@
+name: Python send email
+on:
+  workflow_dispatch:
+    inputs:
+      cmd:
+        description: 'command'
+jobs:
+  which_cmd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Send mail using python
+        run: |
+          python ./mail.py ${{ secrets.MAIL_PASSWORD }}
+

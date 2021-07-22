@@ -17,7 +17,7 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: 'hello test2'
           to: 'jorel@opennebula.io'
-          from: OneHosted
+          from: infra@opennebula.org
           body: "here is something"
           ignore_cert: true
 
