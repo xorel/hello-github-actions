@@ -11,7 +11,7 @@ jobs:
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: mail.opennebula.org
+          server_address: smtp.dreamhost.com
           server_port: 587
           username: infra@opennebula.org
           password: ${{ secrets.MAIL_PASSWORD }}
