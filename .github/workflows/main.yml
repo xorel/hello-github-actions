@@ -22,7 +22,7 @@ jobs:
 
       - name: Standard
         run: |
-          gem install faraday
+          gem install rspec faraday
 
       - name: Standard
         run: |
