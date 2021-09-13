@@ -1,30 +1,22 @@
-name: Labeling issue
+name: One-hosted-test
 on:
+  schedule:
+    - cron:  '10 14 * * 1,4'
+
   workflow_dispatch:
     inputs:
-      test_issue_number:
+      number:
         description: 'Testing issue number'
         required: true
+env:
+  issue_num: "${{ github.event.inputs.test_issue_number || 37 }}"
+
 
 jobs:
   labeled:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Set up Ruby 2.7
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7
-          bundler-cache: true
-
       - name: Standard
         run: |
-          gem install rspec faraday
-
-      - name: Standard
-        run: |
-          rspec test.spec
+          echo "HERE: ${{ env.issue_num }}"
 
