@@ -1,17 +1,27 @@
 name: Labeling issue
 on:
-  issues:
-    types:
-      - labeled
+  workflow_dispatch:
+    inputs:
+      test_issue_number:
+        description: 'Testing issue number'
+        required: true
 
 jobs:
   labeled:
     runs-on: ubuntu-latest
     steps:
-      - name: Add abc label
+
+      - name: Set up Ruby 2.7
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+
+      - name: Standard
         run: |
-          curl -H "Accept: application/vnd.github.v3+json" \
-               -X POST -u xorel:${{ secrets.PAT }} \
-               https://api.github.com/repos/xorel/hello-github-actions/issues/4/labels \
-               -d '["abc"]'
+          gem install faraday
+
+      - name: Standard
+        run: |
+          ./test.rb
 
