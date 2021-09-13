@@ -9,7 +9,7 @@ on:
         description: 'Testing issue number'
         required: true
 env:
-  issue_num: "${{ github.event.inputs.test_issue_number || 37 }}"
+  issue_num: "${{ github.event.inputs.number || 37 }}"
 
 
 jobs:
