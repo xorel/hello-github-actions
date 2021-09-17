@@ -16,7 +16,14 @@ jobs:
   labeled:
     runs-on: ubuntu-latest
     steps:
-      - name: Standard
+      - name: echo1
         run: |
-          echo "HERE: ${{ env.issue_num }}"
+          echo "HERE 1"
 
+      - name: err_false
+        run: |
+          false
+
+      - name: echo2
+        run: |
+          echo "HERE 2"
