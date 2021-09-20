@@ -1,8 +1,5 @@
 name: One-hosted-test
 on:
-  schedule:
-    - cron:  '13 12 * * 1,4'
-
   workflow_dispatch:
     inputs:
       number:
@@ -18,12 +15,5 @@ jobs:
     steps:
       - name: echo1
         run: |
-          echo "HERE 1"
+          test.rb
 
-      - name: err_false
-        run: |
-          false
-
-      - name: echo2
-        run: |
-          echo "HERE 2"
