@@ -1,4 +1,4 @@
-name: One-hosted-test
+name: Test
 on:
   workflow_dispatch:
     inputs:
@@ -16,7 +16,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Set up Ruby 2.7
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+
+
       - name: echo1
-        run: |
-          "ruby test.rb"
+        run: "ruby test.rb"
 
